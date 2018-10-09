@@ -10,6 +10,12 @@ composer reuqire dongkaipo/baidu-php-sdk-image
 
 ```
 <?php
+        $appId = '<app id>';
+        $apiKey = '<api key>';
+        $apiSecretKey = '<secret key>';
+        $image = new ImageClassify($appId, $apiKey, $apiSecretKey); 
+        // 该 client 就是百度的 client
+        $client = $image->getClient();
 
 ```
 
