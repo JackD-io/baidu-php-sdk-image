@@ -2,7 +2,7 @@
 
 namespace Dongkaipo\Baidu;
 
-use Image\AipImageClassify;
+use Baidu\Image\AipImageClassify;
 
 class ImageSearch
 {
