@@ -14,11 +14,11 @@
 * License for the specific language governing permissions and limitations under
 * the License.
 */
+namespace Baidu\Image\Lib;
 
 /**
  * Http Client
  */
-namespace Image\Lib;
 class AipHttpClient{
 
     /**

@@ -14,14 +14,13 @@
 * License for the specific language governing permissions and limitations under
 * the License.
 */
-namespace Image;
-use Image\Lib\AipBase;
+namespace Baidu\Image;
+use Baidu\Image\Lib\AipBase;
 
 /**
  * 百度语音
  */
-class AipSpeech extends AipBase
-{
+class AipSpeech extends AipBase{
 
     /**
      * url
@@ -37,8 +36,8 @@ class AipSpeech extends AipBase
 
     /**
      * 判断认证是否有权限
-     * @param  array $authObj
-     * @return boolean
+     * @param  array   $authObj 
+     * @return boolean          
      */
     protected function isPermission($authObj)
     {
@@ -52,19 +51,18 @@ class AipSpeech extends AipBase
      * @param array $data
      * @param array $headers
      */
-    protected function proccessRequest($url, &$params, &$data, $headers)
-    {
+    protected function proccessRequest($url, &$params, &$data, $headers){
 
         $token = isset($params['access_token']) ? $params['access_token'] : '';
 
-        if (empty($data['cuid'])) {
+        if(empty($data['cuid'])){
             $data['cuid'] = md5($token);
         }
 
-        if ($url === $this->asrUrl) {
+        if($url === $this->asrUrl){
             $data['token'] = $token;
             $data = json_encode($data);
-        } else {
+        }else{
             $data['tok'] = $token;
         }
 
@@ -76,11 +74,10 @@ class AipSpeech extends AipBase
      * @param $content string
      * @return mixed
      */
-    protected function proccessResult($content)
-    {
+    protected function proccessResult($content){
         $obj = json_decode($content, true);
 
-        if ($obj === null) {
+        if($obj === null){
             $obj = array(
                 '__json_decode_error' => $content
             );
@@ -96,11 +93,10 @@ class AipSpeech extends AipBase
      * @param  array $options
      * @return array
      */
-    public function asr($speech, $format, $rate, $options = array())
-    {
+    public function asr($speech, $format, $rate, $options=array()){
         $data = array();
 
-        if (!empty($speech)) {
+        if(!empty($speech)){
             $data['speech'] = base64_encode($speech);
             $data['len'] = strlen($speech);
         }
@@ -109,7 +105,7 @@ class AipSpeech extends AipBase
         $data['rate'] = $rate;
         $data['channel'] = 1;
 
-        $data = array_merge($data, $options);
+        $data = array_merge($data, $options);  
 
         return $this->request($this->asrUrl, $data, array());
     }
@@ -121,19 +117,18 @@ class AipSpeech extends AipBase
      * @param  array $options
      * @return array
      */
-    public function synthesis($text, $lang = 'zh', $ctp = 1, $options = array())
-    {
+    public function synthesis($text, $lang='zh', $ctp=1, $options=array()){
         $data = array();
 
         $data['tex'] = $text;
         $data['lan'] = $lang;
         $data['ctp'] = $ctp;
 
-        $data = array_merge($data, $options);
+        $data = array_merge($data, $options);  
 
         $result = $this->request($this->ttsUrl, $data, array());
 
-        if (isset($result['__json_decode_error'])) {
+        if(isset($result['__json_decode_error'])){
             return $result['__json_decode_error'];
         }
 

@@ -4,7 +4,7 @@ namespace Dongkaipo\Baidu;
 
 use Image\AipImageClassify;
 
-class ImageClassify
+class ImageSearch
 {
     private $client;
 

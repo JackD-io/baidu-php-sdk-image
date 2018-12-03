@@ -15,7 +15,7 @@
 * the License.
 */
 
-namespace Image;
+namespace Baidu\Image;
 
 /**
  * 内容审核

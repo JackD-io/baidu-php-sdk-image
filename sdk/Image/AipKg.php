@@ -14,10 +14,8 @@
 * License for the specific language governing permissions and limitations under
 * the License.
 */
-
-namespace Image;
-use Image\Lib\AipBase;
-
+namespace Baidu\Image;
+use Baidu\Image\Lib\AipBase;
 class AipKg extends AipBase {
 
     /**

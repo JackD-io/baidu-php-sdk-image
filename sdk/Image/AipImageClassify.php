@@ -14,10 +14,8 @@
 * License for the specific language governing permissions and limitations under
 * the License.
 */
-
-namespace Image;
-use Image\Lib\AipBase;
-
+namespace Baidu\Image;
+use Baidu\Image\Lib\AipBase;
 class AipImageClassify extends AipBase {
 
     /**
@@ -82,6 +80,7 @@ class AipImageClassify extends AipBase {
      * @param string $image - 图像数据，base64编码，要求base64编码后大小不超过4M，最短边至少15px，最长边最大4096px,支持jpg/png/bmp格式
      * @param array $options - 可选参数对象，key: value都为string类型
      * @description options列表:
+     *   baike_num 返回百科信息的结果数，默认不返回
      * @return array
      */
     public function advancedGeneral($image, $options=array()){
@@ -102,6 +101,8 @@ class AipImageClassify extends AipBase {
      * @param array $options - 可选参数对象，key: value都为string类型
      * @description options列表:
      *   top_num 返回预测得分top结果数，默认为5
+     *   filter_threshold 默认0.95，可以通过该参数调节识别效果，降低非菜识别率.
+     *   baike_num 返回百科信息的结果数，默认不返回
      * @return array
      */
     public function dishDetect($image, $options=array()){
@@ -122,6 +123,7 @@ class AipImageClassify extends AipBase {
      * @param array $options - 可选参数对象，key: value都为string类型
      * @description options列表:
      *   top_num 返回预测得分top结果数，默认为5
+     *   baike_num 返回百科信息的结果数，默认不返回
      * @return array
      */
     public function carDetect($image, $options=array()){
@@ -221,6 +223,7 @@ class AipImageClassify extends AipBase {
      * @param array $options - 可选参数对象，key: value都为string类型
      * @description options列表:
      *   top_num 返回预测得分top结果数，默认为6
+     *   baike_num 返回百科信息的结果数，默认不返回
      * @return array
      */
     public function animalDetect($image, $options=array()){
@@ -240,6 +243,7 @@ class AipImageClassify extends AipBase {
      * @param string $image - 图像数据，base64编码，要求base64编码后大小不超过4M，最短边至少15px，最长边最大4096px,支持jpg/png/bmp格式
      * @param array $options - 可选参数对象，key: value都为string类型
      * @description options列表:
+     *   baike_num 返回百科信息的结果数，默认不返回
      * @return array
      */
     public function plantDetect($image, $options=array()){
